@@ -1,0 +1,23 @@
+<p>Nombre del empleado: {{nombre}}</p>
+<p>Apellido del empleado: {{apellido}}</p>
+<p>Edad del empleado: {{edad<18 ? "Menor de edad":"Mayor de edad"}}</p>
+<p>Empresa del empleado: {{empresa}}</p>
+
+<!--Haciendo un cuadro de texto para ingresar un dato y lo tomen de valor por el texto dinamico-->
+
+<!--Introduce la empresa: <input type="text" #empresa (keyup)="0" [disabled]="habilitacioncuadro">-->
+Introduce la empresa:<input type="text" [(ngModel)]="empresa"/>
+
+<br/>
+<br/>
+<!--<input type="button" value="Dale!" (click)="llamaEmpresa(empresa.value)"/> EL BOTON-->
+
+<!--EJEMPLO DEL PROPERTY BINDING-->
+<!--EJEMPLO DEL EVENT BINDING-->
+{{textoDeRegistro}} <br/>
+Registrado: <input type="radio" id="registro" value="si" name="nRegistro" [checked]="usuRegistrado" (click)="setusuarioRegistrado($event)"/><br/>
+
+No registrado:<input type="radio" id="registro" value="no" name="nRegistro" (click)="setusuarioRegistrado($event)"/>
+
+<!--LLAMANDO LA FUNCION-->
+{{getRagistroUsuario()}}
