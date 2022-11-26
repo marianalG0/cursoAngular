@@ -1,0 +1,8 @@
+.paraDirectores{
+    /*Estableciendo el css*/
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/*Podemos crear varias clases de estilo*/
