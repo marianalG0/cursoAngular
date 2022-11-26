@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "minCalculadora": {
+    "trabajoDirectiva": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/min-calculadora",
+            "outputPath": "dist/trabajo-directiva",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,12 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -63,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "minCalculadora:build:production"
+              "browserTarget": "trabajoDirectiva:build:production"
             },
             "development": {
-              "browserTarget": "minCalculadora:build:development"
+              "browserTarget": "trabajoDirectiva:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "minCalculadora:build"
+            "browserTarget": "trabajoDirectiva:build"
           }
         },
         "test": {
@@ -90,16 +87,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css", 
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": []
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "67815d7d-1ca7-402b-9581-12ff50c68ab9"
+    "analytics": "530806ad-947b-4930-9ff7-fe3a19fdbab6"
   }
 }
