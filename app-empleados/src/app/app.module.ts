@@ -12,13 +12,17 @@ import { ProyectosComponentComponent } from './proyectos-component/proyectos-com
 import { QuienesComponentComponent } from './quienes-component/quienes-component.component';
 import { ContactoComponentComponent } from './contacto-component/contacto-component.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
+import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 
 //Crear un objeto por cada ruta {path:'url', component:componentequecargara}
 const appRoutes:Routes=[
 {path:'', component:HomeComponentComponent},
 {path:'proyectos', component:ProyectosComponentComponent},
 {path:'quienes', component:QuienesComponentComponent},
-{path:'contacto', component:ContactoComponentComponent}
+{path:'contacto', component:ContactoComponentComponent},
+{path:'actualiza/:id', component:ActualizaComponentComponent},
+{path:'**', component:ErrorPersonalizadoComponent}//Ruta de error
 
 ];//Estaran todas las rutas 
 
@@ -31,7 +35,9 @@ const appRoutes:Routes=[
     HomeComponentComponent,
     ProyectosComponentComponent,
     QuienesComponentComponent,
-    ContactoComponentComponent
+    ContactoComponentComponent,
+    ActualizaComponentComponent,
+    ErrorPersonalizadoComponent
   ],
   imports: [
     BrowserModule,

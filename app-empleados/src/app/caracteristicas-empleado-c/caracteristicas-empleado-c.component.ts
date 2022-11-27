@@ -16,6 +16,6 @@ export class CaracteristicasEmpleadoCComponent {
 
     //this.miServicio.muestraMensaje(value);
 
-    //this.caracteristicasEmpleados.emit(value);
+    this.caracteristicasEmpleados.emit(value);
   }
 }

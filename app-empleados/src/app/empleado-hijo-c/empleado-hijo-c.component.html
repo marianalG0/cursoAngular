@@ -3,7 +3,11 @@
       <div class="col">
         <!--Vamos a recorrer con la directiva ngFor el array que creamos y mostrarlo-->
         <div>
-        {{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}} {{empleadoDeLista.salario}}
+          {{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}} {{empleadoDeLista.salario}}
+
+          <a [routerLink]="['/actualiza',indice]" [queryParams]="{accion:'1'}">Actualiza</a>
+          &nbsp;&nbsp; <!--Hace espacio horizontales-->
+          <a [routerLink]="['/actualiza',indice]" [queryParams]="{accion:'2'}">Eliminar</a>
         </div>
         
         <ul style="list-style:none;">

@@ -26,4 +26,31 @@ export class EmpleadoService{
 
     this.empleados.push(empleado);
   }
+
+  //Metodo para encontrar un empleado
+  encontrarEmpleado(indice:number){
+    //almacenados el empleado con el id que encuentra
+    let empleado:Empleado=this.empleados[indice];
+
+    return empleado;
+  }
+
+  //Metodo para actulizar que recibe tanto el indice como el empleado
+  actualizarEmpleado(indice:number, empleado:Empleado){
+    //Variable, almacenamos la informacion que hay en la posicion del array 
+    let empleadoModificado=this.empleados[indice];
+
+    //le pasamos el valor que ya se almaceno para qu elo cambie 
+    empleadoModificado.nombre=empleado.nombre;
+    empleadoModificado.apellido=empleado.apellido;
+    empleadoModificado.cargo=empleado.cargo;
+    empleadoModificado.salario=empleado.salario;
+
+  }
+
+  //Servicio de eliminar
+  eliminarEmpleado(indice:number){
+    //Metodo para eliminar en un array en JS 
+    this.empleados.splice(indice,1);
+  }
 }
