@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <!--Vamos a recorrer con la directiva ngFor el array que creamos y mostrarlo-->
+        <div>
+        {{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}} {{empleadoDeLista.salario}}
+        </div>
+        
+        <ul style="list-style:none;">
+          <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
+        </ul>
+        <app-caracteristicas-empleado-c (caracteristicasEmpleados)="agregarCaracteristica($event)"></app-caracteristicas-empleado-c>
+      </div>
+    </div>
+  </div>

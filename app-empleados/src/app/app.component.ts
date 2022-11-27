@@ -1,32 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { EmpleadoService } from './empleados.service';
+import { ServicioEmpleadosService } from './servicio-empleados.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  titulo = 'Listado de Empleados';
+export class AppComponent{ //quitamos el implements de OnInit
+  //titulo = 'Listado de Empleados'; Lo pasamos a component Home
 
   //Agregando unos cuantos empleados para que se visualice en la pagina, guardandolo en un array de tipo empleado que es la clase creada
   //empleados:Empleado[]=[];//esta vacio ahora mismo 
 
-  empleados:Empleado[]=[//Rellenando
-  //Instanciando esta clase con unos empleados
-  new Empleado("Juan","Diaz","Presidente",7500),
-  new Empleado("Julio","Cortez","Ingeniero",22000),
-  new Empleado("Mariana","Garcia","Ingeniero",20000),
-  new Empleado("Erika","May","Arquitecta",19700)
-];
+  /*//Creamos el constructor con parametro que es del tipo servicio que creamos
+  constructor(private miServicio:ServicioEmpleadosService, private empleadosService:EmpleadoService){
 
+    //Almacena esa informacion en el array vacio 
+    // this.empleados=this.empleadosService.empleados;
+  } //Acabamos de inyectar el servicio*/
+
+ /* //Primer metodo que se ejecuta en la clase 
+  ngOnInit(): void {
+    this.empleados=this.empleadosService.empleados;
+  } llevado a HOMECOMPONENT*/
+
+  //empleados:Empleado[]=[]; llevado a HOMECOMPONENT
+
+/*
 //Metodo para enviar con el boton
 agregarEmpleado(){
   //Declaramos variable que almacene objeto de tipo empleado que viene del formulario
   let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo,this.cuadroSalario)// Le decimos que guarde las cosas que viene en cada cuadro
+
+  //Antes de que se agregue el empleado a la lista haremos uso del servicio
+  //this.miServicio.muestraMensaje("Nombre del empleado : " + miEmpleado.nombre);
   
   //Le decimos que guarde miEmpleado en el array empleados, para que se muestre
-  this.empleados.push(miEmpleado);
+    //this.empleados.push(miEmpleado);
+    
+    //LLamando al metodo para agregar el empleado
+    this.empleadosService.agregarEmpleadoServicio(miEmpleado);
 }
 
 //Creando las variables del banana in box de los input
@@ -34,5 +49,5 @@ agregarEmpleado(){
 cuadroNombre:string="";
 cuadroApellido:string="";
 cuadroCargo:string="";
-cuadroSalario:number=0;
+cuadroSalario:number=0;*///LLEVAMOS TODO A COMPONENT HOME
 }

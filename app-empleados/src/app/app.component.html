@@ -1,52 +1,12 @@
-<div class="container">
-    <div class="col">
-        <h1 style="text-align: center;">{{titulo}}</h1>
-        <br><br>
+<nav class="nav">
+  <a class="nav-link active" aria-current="page" href="">Home</a>
+  <a class="nav-link" href="/proyectos">Proyectos</a>
+  <a class="nav-link" href="/quienes">¿Quienes somos?</a>
+  <a class="nav-link" href="/contacto">Contacto</a>
+</nav>
 
-        <!--Creando el formulario-->
-        <form class="form-group row">
 
-          <!--Input nombre-->
-          <div class="form-group col-md-3">
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" placeholder="nombre" class="form-control" [(ngModel)]="cuadroNombre">
-          </div>
+<!--Borramos el contenido del formulario y del componente hijo, para pasarlo al homeComponent-->
 
-          <!--Input apellido-->
-          <div class="form-group col-md-3">
-            <label for="apellido">Apellido:</label>
-            <input type="text" name="apellido" id="apellido" placeholder="apellido" class="form-control" [(ngModel)]="cuadroApellido">
-          </div>
-
-          <!--Input Cargo-->
-          <div class="form-group col-md-3">
-            <label for="cargo">Cargo:</label>
-            <input type="text" name="cargo" id="cargo" placeholder="cargo" class="form-control" [(ngModel)]="cuadroCargo">
-          </div>
-
-          <!--Input salario-->
-          <div class="form-group col-md-3">
-            <label for="salario">Salario:</label>
-            <input type="text" name="salario" id="salario" placeholder="salario" class="form-control" [(ngModel)]="cuadroSalario">
-          </div>
-
-        <div class="col">
-          <button type="submit" class="btn btn-primary" (click)="agregarEmpleado()" style="margin-top:35px;">Agregar</button>
-        </div>
-        </form>
-      </div>
-    </div>
-
-    <br><br><br>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <!--Vamos a recorrer con la directiva ngFor el array que creamos y mostrarlo-->
-      <div *ngFor="let empleado of empleados; let i=index">
-      {{i+1}}: {{empleado.nombre}} {{empleado.apellido}} {{empleado.cargo}} {{empleado.salario}}
-      </div>
-    </div>
-  </div>
-</div>
- 
+<!--Le decimos que aqui gestionamos las rutas-->
+<router-outlet></router-outlet>
