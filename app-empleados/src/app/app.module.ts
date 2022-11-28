@@ -14,14 +14,21 @@ import { ContactoComponentComponent } from './contacto-component/contacto-compon
 import { RouterModule, Routes } from '@angular/router';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
+import { DataServices } from './data.services';
+import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginGuardian } from './login/login-guardian';
 
 //Crear un objeto por cada ruta {path:'url', component:componentequecargara}
 const appRoutes:Routes=[
 {path:'', component:HomeComponentComponent},
 {path:'proyectos', component:ProyectosComponentComponent},
-{path:'quienes', component:QuienesComponentComponent},
-{path:'contacto', component:ContactoComponentComponent},
+{path:'quienes', component:QuienesComponentComponent,canActivate:[LoginGuardian]},
+{path:'contacto', component:ContactoComponentComponent, canActivate:[LoginGuardian]},
 {path:'actualiza/:id', component:ActualizaComponentComponent},
+{path:'login', component:LoginComponent},
 {path:'**', component:ErrorPersonalizadoComponent}//Ruta de error
 
 ];//Estaran todas las rutas 
@@ -37,14 +44,16 @@ const appRoutes:Routes=[
     QuienesComponentComponent,
     ContactoComponentComponent,
     ActualizaComponentComponent,
-    ErrorPersonalizadoComponent
+    ErrorPersonalizadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [ServicioEmpleadosService, EmpleadoService],
+  providers: [ServicioEmpleadosService, EmpleadoService, DataServices, LoginService, CookieService, LoginGuardian],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

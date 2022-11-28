@@ -16,7 +16,21 @@ export class HomeComponentComponent implements  OnInit{
   }
 
   ngOnInit(): void {
-    this.empleados=this.empleadosService.empleados;
+   // this.empleados=this.empleadosService.empleados; Cargaba el array de forma manual que teniamos con datos
+
+   //Suscribiendonos al observable para obtener la informacion , en el subscibre le pasamos una variable donde se almacena los datos
+   this.empleadosService.obtenerEmpleados().subscribe(misEmpleados=>{
+
+    console.log(misEmpleados);
+
+    //Almacenados lo que tiene misEmpleados en el array empleados
+    this.empleados=Object.values(misEmpleados);
+
+    //Llamamos el metodo creado 
+    this.empleadosService.setEmpleados(this.empleados);
+
+   });
+
   }
 
   empleados:Empleado[]=[];

@@ -2,13 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { Empleado } from './empleado.model';
 import { EmpleadoService } from './empleados.service';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
+import firebase from 'firebase/compat/app';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{ //quitamos el implements de OnInit
+export class AppComponent implements OnInit{ 
+
+  constructor(private loginService:LoginService){}
+
+  ngOnInit(): void {
+
+    //Inicializamos la aplicacion 
+    firebase.initializeApp({
+
+      apiKey:"AIzaSyCA9db6aR2U0n3faV8i5_RWiKphAIBLfhc",
+      authDomain:"mis-clientes-f417f",
+
+    });
+  }
+
+  estaLogueado(){
+    return this.loginService.estaLogueado();
+  }
+
+  logout(){
+    this.loginService.logout();
+  }
+
   //titulo = 'Listado de Empleados'; Lo pasamos a component Home
 
   //Agregando unos cuantos empleados para que se visualice en la pagina, guardandolo en un array de tipo empleado que es la clase creada

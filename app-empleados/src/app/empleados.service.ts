@@ -1,14 +1,31 @@
 import { Injectable } from "@angular/core";
+import { DataServices } from "./data.services";
 import { Empleado } from "./empleado.model";
 import { ServicioEmpleadosService } from "./servicio-empleados.service";
 
 @Injectable()
 export class EmpleadoService{
   //Haciendo la inyeccion del servicio
-  constructor(private servicioVentanaEmergente: ServicioEmpleadosService){
+  constructor(private servicioVentanaEmergente: ServicioEmpleadosService, private dataService:DataServices){
 
   }
 
+  //Metodo que recibira por parametro un array 
+  setEmpleados(misEmpleados:Empleado[]){
+
+    //Decirle que en el array vacio es igual al array que le pasamos por parametro 
+    this.empleados=misEmpleados;
+
+  }
+
+  //Encargado de obtener los datos del dataServices
+  obtenerEmpleados(){
+    return this.dataService.cargarEmpleados(); //Devuelve un observable
+  }
+
+  empleados:Empleado[]=[];
+
+  /*
     //Recopilar los datos hipotetica de una base 
     empleados:Empleado[]=[//Rellenando
 
@@ -18,6 +35,7 @@ export class EmpleadoService{
     new Empleado("Mariana","Garcia","Ingeniero",20000),
     new Empleado("Erika","May","Arquitecta",19700)
   ];
+*/
 
   //Metodo encargado de agregar un empleado al componente en el que se inyecte el servicio 
   agregarEmpleadoServicio(empleado:Empleado){
@@ -25,6 +43,8 @@ export class EmpleadoService{
     this.servicioVentanaEmergente.muestraMensaje("Persona que se agrega : " + "\n" + empleado.nombre + "\n" + "Salario : " + empleado.salario);
 
     this.empleados.push(empleado);
+
+    this.dataService.guardarEmpleados(this.empleados);
   }
 
   //Metodo para encontrar un empleado
@@ -46,11 +66,21 @@ export class EmpleadoService{
     empleadoModificado.cargo=empleado.cargo;
     empleadoModificado.salario=empleado.salario;
 
+    //Llamamos al metodo de actualizar que acabamos de crear
+    this.dataService.actualizarEmpleado(indice,empleado);
   }
 
   //Servicio de eliminar
   eliminarEmpleado(indice:number){
     //Metodo para eliminar en un array en JS 
     this.empleados.splice(indice,1);
+
+    //llamando el metodo para eliminar en la base de datos
+    this.dataService.eliminarEmpleado(indice);
+
+    //Reconstruirlo, volvemos a guardar los registros
+
+    if(this.empleados!=null)this.dataService.guardarEmpleados(this.empleados);
+    
   }
 }

@@ -3,6 +3,10 @@
   <a class="nav-link" href="/proyectos">Proyectos</a>
   <a class="nav-link" href="/quienes">¿Quienes somos?</a>
   <a class="nav-link" href="/contacto">Contacto</a>
+
+
+  <a class="nav-link" routerLink="/login" style="margin-left: 700px;" *ngIf="!estaLogueado()">Login</a> <!--Le decimos con el ! SI NO ESTA LOGUEADO...-->
+  <a class="nav-link" (click)="logout()"  *ngIf="estaLogueado()" style="margin-left: 700px;">Logout</a>
 </nav>
 
 
